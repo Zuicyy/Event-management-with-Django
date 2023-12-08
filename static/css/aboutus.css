@@ -1,0 +1,129 @@
+*{
+    
+    border:border-box;
+    margin:0;
+    padding:0;
+    text-decoration: none;
+}
+body{
+    background-color:antiquewhite;
+}
+.heading{
+   margin-top:15px ;
+    height:100px;
+    margin-bottom:30px;
+}
+.read-more{
+    color:rgb(206, 183, 140);
+}
+
+.heading{
+    text-align: center;
+    margin-top: 60px;
+}
+.heading h1{
+  
+font-size: 50px;
+color:black;
+}
+
+.heading p{
+    color: #8D3B72;
+    font-weight: 600;
+    
+}
+.about-content{
+    text-align: center;
+    margin-bottom:50px;
+}
+.about-content a{
+    margin-left :450px;
+}
+
+.about-content p{
+    color:rgb(158, 125, 125);
+    margin-top:10px;
+    font-size:20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    width:600px;
+    margin-left :450px;
+    margin-bottom: 10px;
+}
+.footer h1{
+    text-align: center;
+    color:rgb(171, 133, 83);
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+.teams{
+    height:400px;
+    width:200px;
+    text-align: center;
+    border:2px solid white;
+    background-color: rgb(206, 183, 140);
+    border-radius: 15px;
+}
+.container-teams{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.name{
+    margin-bottom:20px;
+    font-size: 25px;
+    color:rgb(45, 44, 44);
+    font-weight: 500;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: rgb(206, 183, 140);
+}
+.about{
+    text-align: left;
+    margin-left:5px;
+    color:rgb(75, 65, 37);
+    margin-bottom: 20px;
+    background-color: rgb(206, 183, 140);
+}
+.social-links{
+    color:cornsilk;
+    background-color:  rgb(206, 183, 140);
+   
+}
+.social-links a{
+    color:black;
+}
+.n1{
+    margin-right: 5px;
+   
+
+}
+.pic{
+    height:150px;
+    width:150px;
+    border:2px solid white;
+    margin:10px 10px 10px 25px;
+    border-radius: 15px;
+    background-image: url("E:\Coding\Django-CodeWithHarry\Hello\static\images\subash.jpg");
+    background-size: cover;
+    border-radius: 15px;
+    
+}
+.pict{
+    height:150px;
+    width:150px;
+    border:2px solid white;
+    margin:10px 10px 10px 25px;
+    background-image: url("paya.jpg");
+    background-size: cover;
+    border-radius: 15px;
+}
+.pictu{
+    height:150px;
+    width:150px;
+    border:2px solid white;
+    margin:10px 10px 10px 25px;
+    border-radius: 15px;
+    background-image: url("rishav.jpg");
+    background-size: cover;
+    border-radius: 15px;
+}
