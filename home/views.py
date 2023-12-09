@@ -9,10 +9,10 @@ def about(request):
     return render(request, 'aboutus.html')
 
 def services(request):
-    return HttpResponse("this is servicepage")
+    return render(request, 'services.html')
 
-def login(request):
-    return render(request, 'login.html')
+def gallery(request):
+    return render(request, 'gallery.html')
 
-def navbar(request):
-    return render(request,'index.html')
+def contact(request):
+    return render(request,'contactus.html')
