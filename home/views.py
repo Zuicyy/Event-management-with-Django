@@ -15,4 +15,11 @@ def gallery(request):
     return render(request, 'gallery.html')
 
 def contact(request):
+    
     return render(request,'contactus.html')
+
+def login(request):
+    return render(request, 'login.html')
+
+def register(request):
+    return render(request, 'register.html')
