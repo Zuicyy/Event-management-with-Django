@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 from datetime import datetime
 from home.models import Contact
 # Create your views here.
