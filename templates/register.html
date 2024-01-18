@@ -9,7 +9,8 @@
 <body>
   <div class="container">
     <h1>Registration</h1>
-    <form>
+    <form method="post">
+      {% csrf_token %}
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
 

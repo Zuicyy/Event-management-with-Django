@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from datetime import datetime
 from home.models import Contact
 from django.contrib import messages
+from .forms import RegistrationForm
 
 # Create your views here.
 
@@ -28,11 +29,19 @@ def contact(request):
 
     return render(request,'contactus.html')
 
-def login(request):
-    return render(request, 'login.html')
-
 def register(request):
-    return render(request, 'register.html')
+    if request.method=='POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+        else:
+            form = RegistrationForm()
+            return render(request, 'register.html', {'form': form})
+        
+def login(request):
+    return render(request, 'login.html')        
+
 
 def thankyou(request):
     return render(request, 'thankyou.html')
