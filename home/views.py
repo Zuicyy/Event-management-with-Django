@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from datetime import datetime
 from home.models import Contact
 from django.contrib import messages
-from .forms import RegistrationForm
+#from .forms import RegistrationForm
 
 # Create your views here.
 
