@@ -13,14 +13,15 @@
 </head>
 <body>
   <div class="wrapper">
-    <form action="">
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
       <h1>Login</h1>
       <div class="input-box">
-        <input type="text" placeholder="Username" required>
+        <input type="text" placeholder="Username" name="username" required>
         <i class='bx bxs-user'></i>
       </div>
       <div class="input-box ">
-        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Password" name="password" required>
         <i class='bx bxs-lock-alt' ></i>
       </div>
       <div class="remember-forgot">
@@ -29,25 +30,9 @@
       </div>
       <button type="submit" class="btn">Login</button>
       <div class="register-link">
-        <p>Dont have an account? <a href="#">Register</a></p>
+        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
       </div>
     </form>
   </div>
-
-
-  <!-- this is for redirecting the login mail to successfull tag  -->
-  <!-- <script>
-    function func(){
-      var email=document.getElementById("username").value;
-      var pass =document.getElementbyid("password").value;
-      if (email=='aviadhikari671@gmail.com'&&pass=='1234567'){
-        alert ("success full!")
-        window.location.assign("index.html")
-      }
-      else{
-        alert("wrong entry invalid")
-      }
-    }
-  </script> -->
 </body>
 </html>

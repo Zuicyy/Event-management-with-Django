@@ -14,7 +14,7 @@ urlpatterns = [
     path("services", views.services, name='services'),
     path("gallery", views.gallery, name='gallery'),
     path("contact", views.contact, name='contact'),
-    path("login", views.login, name='login'),
+    path("login", views.login_user, name='login'),
     path("register", views.register, name='register'),
     #path('thankyou', views.thankyou, name='Thankyou'),
     
