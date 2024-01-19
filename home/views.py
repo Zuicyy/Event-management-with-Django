@@ -31,42 +31,15 @@ def contact(request):
 
     return render(request,'contactus.html')
 
-def login(request):
-    return render(request, 'login.html')        
-
-
-def thankyou(request):
-    return render(request, 'thankyou.html')
-
 def register(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            # Extract cleaned data from the form
-            username = form.cleaned_data['username']
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            confirm_password = form.cleaned_data['confirm_password']
-
-            # Check if the passwords match
-            if password != confirm_password:
-                return render(request, 'registration/register.html', {'form': form, 'error_message': 'Passwords do not match.'})
-
-            # Check if a user with the same username or email already exists
-            if User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists():
-                return render(request, 'registration/register.html', {'form': form, 'error_message': 'Username or email already exists.'})
-
-            # Create a new user
-            user = User.objects.create_user(username=username, email=email, password=password)
-
-            # Log the user in (optional)
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-
-            # Redirect to a success page or login page after successful registration
-            return redirect('registration_success')
-
+            user = form.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+            return redirect('home')  # Replace 'home' with the name of your home page URL
     else:
         form = SignUpForm()
 

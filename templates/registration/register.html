@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
-  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  <link rel="stylesheet" type="text/css" href="/static/css/signup.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -18,20 +18,21 @@
       {% endif %}
       <div class="input-box">
         {{ form.username }}
-        <i class='bx bxs-user'></i>
+        <i class='bx bx-user'></i>
       </div>
       <div class="input-box">
         {{ form.email }}
-        <i class='bx bxs-user'></i>
+        <i class='bx bx-mail-send'></i>
       </div>
-      <div class="input-box ">
-        {{ form.password }}
-        <i class='bx bxs-lock-alt' ></i>
-      </div>
-      <div class="input-box ">
-        {{ form.confirm_password }}
-        <i class='bx bxs-lock-alt' ></i>
-      </div>
+      <div class="input-box">
+        {{ form.password1 }}
+        <i class='bx bx-lock-alt' ></i>
+    </div>
+    <div class="input-box">
+        {{ form.password2 }}
+        <i class='bx bx-lock-alt' ></i>
+    </div>
+    
       <div class="terms">
         {{ form.agree_terms }} {{ form.agree_terms.label_tag }}
       </div>
