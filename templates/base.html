@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,23 +27,34 @@
         <a href="{% url 'home' %}" class="logo"><span>Event</span>Managements</a>
         
         <nav class ="navbar">
+            {% if user.is_authenticated %}
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'services' %}">Service</a>
+                <a href="{% url 'gallery' %}">Gallery</a>
+                <a href="{% url 'contact' %}">Contact</a>
+                <a href="{% url 'logout' %}">logout</a>
+            {% else %}
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'about' %}">About</a>
             <a href="{% url 'services' %}">Service</a>
             <a href="{% url 'gallery' %}">Gallery</a>
             <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+            {% endif %}
+
         </nav>
 
         <div id="menu-bars" class="fas fa-bars"></div>
     </header>
-
+    {% include 'messaging.html' %}
     {% block body %}
     {% endblock body %}
    
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <!-- costom js files link  -->
-<script src="/static/js/indexscript.js" defer></script>
 
 </body>
 </html>

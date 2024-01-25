@@ -4,6 +4,7 @@ from home import views
 # In your urls.py
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import register
     
 
 
@@ -13,11 +14,10 @@ urlpatterns = [
     path("services", views.services, name='services'),
     path("gallery", views.gallery, name='gallery'),
     path("contact", views.contact, name='contact'),
-    path("login", views.login, name='login'),
+    path("login", views.login_user, name='login'),
     path("register", views.register, name='register'),
-    path('thankyou', views.thankyou, name='Thankyou'),
-    
-]
+    path("logout", views.logout_user, name='logout'),
+    ] 
 
 
 if settings.DEBUG:
