@@ -18,7 +18,7 @@ urlpatterns = [
     path("register", views.register, name='register'),
     #path('thankyou', views.thankyou, name='Thankyou'),
     
-]
+] 
 
 
 if settings.DEBUG:

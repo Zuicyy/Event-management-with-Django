@@ -4,7 +4,7 @@ from home.models import Contact
 from django.contrib import messages
 from .forms import SignUpForm
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
@@ -33,21 +33,47 @@ def contact(request):
     return render(request,'contactus.html')
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+    
     if request.method == 'POST':
+        if request.user.is_authenticated:
+            return redirect('/')
+
+    if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=user.username, password=raw_password)
-            login(request, user)
-            return redirect('home')  # Replace 'home' with the name of your home page URL
+            messages.success(request, f="New Account Created {user.username}")
+            return redirect('/')
+
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
+
     else:
         form = SignUpForm()
 
-    return render(request, 'registration/register.html', {'form': form})
+    return render(
+        request=request,
+        template_name = "register.html",
+        context={"form": form}
+    )
+    #     form = SignUpForm(request.POST)
+    #     if form.is_valid():
+    #         user = form.save()
+    #         raw_password = form.cleaned_data.get('password1')
+    #         user = authenticate(username=user.username, password=raw_password)
+    #         login(request, user)
+    #         return redirect('/')  # Replace 'home' with the name of your home page URL
+    # else:
+    #     form = SignUpForm()
+
+    # return render(request, 'registration/register.html', {'form': form})
 
 
 def login(request):
+
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
