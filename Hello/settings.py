@@ -148,3 +148,4 @@ STATICFILES_DIRS = [
 ]
 
 
+AUTHENTICATIO_BACKENDS = ['home.backends.EmailBackend']

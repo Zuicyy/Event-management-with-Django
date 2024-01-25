@@ -16,9 +16,8 @@ urlpatterns = [
     path("contact", views.contact, name='contact'),
     path("login", views.login_user, name='login'),
     path("register", views.register, name='register'),
-    #path('thankyou', views.thankyou, name='Thankyou'),
-    
-] 
+    path("logout", views.logout_user, name='logout'),
+    ] 
 
 
 if settings.DEBUG:
