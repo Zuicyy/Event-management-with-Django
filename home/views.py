@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, HttpResponse
 from home.models import Contact
 from django.contrib import messages
-from .forms import SignUpForm, LoginForm
-from django.contrib.auth import authenticate, login, logout
+from .forms import SignUpForm, LoginForm, UserUpdateForm
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from .decorators import user_not_authenticated
 
@@ -96,4 +96,30 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
+    return redirect('/')
+
+
+#for Profile
+def profile(request, username):
+    if request.method == "POST":
+        user = request.user
+        form = UserUpdateForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            user_form = form.save()
+            messages.success(request, f'{user_form.username}, Your profile has been updated!')
+            return redirect("profile", user_form.username)
+
+        for error in list(form.errors.values()):
+            messages.error(request, error)
+
+    user = get_user_model().objects.filter(username=username).first()
+    if user:
+        form = UserUpdateForm(instance=user)
+        form.fields['description'].widget.attrs = {'rows': 1}
+        return render(
+            request=request,
+            template_name="profile.html",
+            context={"form": form}
+            )
+    
     return redirect('/')
