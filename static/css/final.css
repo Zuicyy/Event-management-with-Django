@@ -1,0 +1,95 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+    }
+    
+    .futsal-cover {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #eee;
+    }
+    
+    .futsal-cover img {
+    width: 100%;
+    max-width: 300px;
+    }
+    
+    .futsal-details {
+        color: #eee;
+    margin-left: 10px;
+    }
+    
+    .futsal-details h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #eee;
+    }
+    
+    .futsal-details p {
+    margin-bottom: 10px;
+    color: #eee;
+    }
+    
+    .rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    }
+    
+    .star {
+    color: #ffc107;
+    margin-right: 5px;
+    }
+    
+    .rating-text {
+    margin-left: 10px;
+    }
+    
+    .book-details h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    }
+    
+    .book-details ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+    }
+    
+    .book-details li {
+    margin-bottom: 5px;
+    }
+    
+    .book-details h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    }
+    
+    .purchase-info {
+    margin-left: 10px;
+    }
+    
+    .purchase-info p {
+    margin-bottom: 5px;
+    }
+    
+    .price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    }
+    
+    .price-text {
+    font-weight: bold;
+    margin-right: 10px;
+    }
+    
+    .list-price {
+    text-decoration: line-through;
+    margin-right: 10px;
+    }

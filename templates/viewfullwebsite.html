@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Event Management{% endblock title %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/css/home.css">
+</head>
+<body>
+	<div class="trending">Events</div>
+	<div class="items">
+		<div class="item"><a href="{% url 'futsal' %}">Futsal</a></div>
+		<div class="item"><a href="{% url 'wedding' %}">wedding</a></div>
+		<div class="item"><a href="{% url 'music' %}">Music</a> </div>
+		<div class="item"><a href="{% url 'birthday' %}">Birthday</a> </div>
+		{% comment %} <div class="item">Banished From Th</div>
+		<div class="item">Classroom of the . 8D</div>
+		<div class="item">实力 至上 主義 教室</div> {% endcomment %}
+	</div>
+</body>
+</html>
+
+{% endblock body %}

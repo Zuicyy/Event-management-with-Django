@@ -9,6 +9,12 @@ from .decorators import user_not_authenticated
 
 # Create your views here.
 
+def home(request):
+    return render(request, 'viewfullwebsite.html')
+
+def futsal(request):
+    return render(request, 'futsal.html')
+
 def index(request):
     return render(request, 'index.html')
 
@@ -20,6 +26,21 @@ def services(request):
 
 def gallery(request):
     return render(request, 'gallery.html')
+
+def futsal(request):
+    return render(request, 'futsal.html')
+
+def wedding(request):
+    return render(request, 'wedding.html')
+
+def music(request):
+    return render(request, 'music.html')
+
+def birthday(request):
+    return render(request, 'birthday.html')
+
+def final(request):
+    return render(request, 'finalpage.html')
 
 def contact(request):
     if request.method == "POST":
