@@ -1,22 +1,19 @@
+from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect, HttpResponse
-from home.models import Contact
+from home.models import Contact, UserProfile
 from django.contrib import messages
-from .forms import SignUpForm, LoginForm
-from django.contrib.auth import authenticate, login, logout
+from .forms import SignUpForm, LoginForm, UserProfileForm
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from .decorators import user_not_authenticated
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 
-def home(request):
-    return render(request, 'viewfullwebsite.html')
-
-def futsal(request):
-    return render(request, 'futsal.html')
-
 def index(request):
-    return render(request, 'index.html')
+    user_profile = UserProfile.objects.filter(user_id=request.user.id).first()
+    return render(request, 'index.html',{"user_profile": user_profile})
 
 def about(request):
     return render(request, 'aboutus.html')
@@ -27,20 +24,33 @@ def services(request):
 def gallery(request):
     return render(request, 'gallery.html')
 
-def futsal(request):
-    return render(request, 'futsal.html')
+def profile(request):
+    user_profile_form = UserProfileForm()
+    if not request.user.is_authenticated:
+        return redirect('login')
 
-def wedding(request):
-    return render(request, 'wedding.html')
+    user_profile = UserProfile.objects.filter(user_id=request.user.id).first()
+    user = request.user
+    if request.method == 'POST':
+        if request.POST["first_name"]:
+            user.first_name = request.POST["first_name"]
+        if request.POST["last_name"]:
+            user.last_name = request.POST["last_name"]
+        o_password = request.POST["o_password"]
+        n_password = request.POST["password"]
+        if o_password and check_password(o_password, user.password):
+            user.set_password(n_password)
+            user.save()
+        user.save()
+        user_profile_form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
 
-def music(request):
-    return render(request, 'music.html')
+        if user_profile_form.is_valid():
+            user_profile_form.save()
+            update_session_auth_hash(request, user)
+        else:
+            print(user_profile_form.errors)
 
-def birthday(request):
-    return render(request, 'birthday.html')
-
-def final(request):
-    return render(request, 'finalpage.html')
+    return render(request,'profile.html', {"user_profile_form":user_profile_form, "user":request.user,"up":user_profile})
 
 def contact(request):
     if request.method == "POST":
@@ -63,6 +73,7 @@ def register(request):
 
     if request.method == "POST":
         form = SignUpForm(request.POST)
+        print(request.POST)
         if form.is_valid():
             user = form.save()
             messages.success(request, "New Account Created {user.username}")

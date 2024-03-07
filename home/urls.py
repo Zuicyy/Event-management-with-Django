@@ -16,13 +16,8 @@ urlpatterns = [
     path("contact", views.contact, name='contact'),
     path("login", views.login_user, name='login'),
     path("register", views.register, name='register'),
+    path("profile", views.profile, name='profile'),
     path("logout", views.logout_user, name='logout'),
-    path("home", views.home, name='home1'),
-    path("futsal", views.futsal, name='futsal'),
-    path("wedding", views.wedding, name='wedding'),
-    path("music", views.music, name='music'),
-    path("birthday", views.birthday, name='birthday'),
-    path("final", views.final, name='final'),
     ] 
 
 

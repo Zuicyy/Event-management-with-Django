@@ -37,23 +37,20 @@ body{
     background-color:#222;
 }
 .heading{
-    margin-top: 7rem;
     text-align: center;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
     color: #fff;
     text-transform: uppercase;
     font-size: 1.5rem;
 }
 
 .heading h1{
- 
     font-size: 4rem;
     color:#fff;
     text-transform: uppercase;
     }
 
 .heading span{
-
     color:var(--main-color);
     text-transform: uppercase;
 }
